@@ -1,7 +1,5 @@
-#define DDRB *((volatile char *)0x24)
-#define DDB5 5
-#define PORTB *((volatile char *)0x25)
-#define PORTB5 5
+#include "globaldefs.h"
+#include "mem.h"
 
 void delay();
 
@@ -13,11 +11,10 @@ void delay();
     TODO: Write small assembly code (always run on reset) and jmp to start
 */
 void start() {
-    DDRB |= (1 << DDB5);   // Arduino digital pin 13
-    
+    *DDRB |= bit5;   // Arduino digital pin 13
     
     while (1) {
-        PORTB ^= (1 << PORTB5);
+        *PORTB ^= bit5;
         delay();
     }
 }
