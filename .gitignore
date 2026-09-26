@@ -1,5 +1,2 @@
-*.bin
-*.hex
-*.elf
-*.o
 .ignore
+build

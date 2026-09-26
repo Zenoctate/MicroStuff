@@ -17,4 +17,4 @@
 #define DDRD    ((volatile uint8_t *)0x2A)
 #define PORTD   ((volatile uint8_t *)0x2B)
 
-uint16_t memcpy(uint8_t *src, uint8_t *dest, uint16_t size);
+uint8_t test();
