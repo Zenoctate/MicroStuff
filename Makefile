@@ -24,7 +24,6 @@ FLASHER = avrdude
 CFLAGS = -mmcu=$(MICROCONTROLLER) -std=c11 -I$(INC_DIR) -c \
 	-ffreestanding -fno-builtin -nostdinc \
 	-Wall -Wextra \
-	-Wno-builtin-declaration-mismatch \
 	-MMD -MP 		# Helps to check if header files are changed
 
 AFLAGS = -mmcu=$(MICROCONTROLLER)

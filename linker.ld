@@ -13,10 +13,13 @@ SECTIONS {
     .text : {
         *(.reset)
         *(.text)
+        e_text = .;
     }
 
     .data : {
+        s_data = .;
         *(.data)
         *(.bss)
+        e_data = .;
     }
 }

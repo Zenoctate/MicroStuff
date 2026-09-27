@@ -17,4 +17,7 @@
 #define DDRD    ((volatile uint8_t *)0x2A)
 #define PORTD   ((volatile uint8_t *)0x2B)
 
-CODE_SEC uint8_t test();
+// Inside linker script
+extern uint16_t e_text;
+extern uint16_t s_data;
+extern uint16_t e_data;
