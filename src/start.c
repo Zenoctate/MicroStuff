@@ -6,7 +6,6 @@ CODE_SEC void start();
 
 void start() {
     *DDRB |= bit5;   // Arduino digital pin 13
-    test();
 
     while (1) {
         *PORTB ^= bit5; // Toggle pin 13 using XOR operator
