@@ -5,19 +5,50 @@
 
 #include "globaldefs.h"
 
+// Current timer values
+#define TCNT0   ((volatile uint8_t *)0x46)
+#define TCNT1L  ((volatile uint8_t *)0x84)
+#define TCNT1H  ((volatile uint8_t *)0x85)
+#define TCNT2   ((volatile uint8_t *)0xB2)
+
+// Timer compare
+#define OCR0A   ((volatile uint8_t *)0x47)
+#define OCR0B   ((volatile uint8_t *)0x48)
+#define OCR1AL  ((volatile uint8_t *)0x88)
+#define OCR1AH  ((volatile uint8_t *)0x89)
+#define OCR1BL  ((volatile uint8_t *)0x8A)
+#define OCR1BH  ((volatile uint8_t *)0x8B)
+#define OCR2A   ((volatile uint8_t *)0xB3)
+#define OCR2B   ((volatile uint8_t *)0xB4)
+
+// Timer configuration
+#define TCCR0A  ((volatile uint8_t *)0x44)
+#define TCCR0B  ((volatile uint8_t *)0x45)
+#define TCCR1A  ((volatile uint8_t *)0x80)
+#define TCCR1B  ((volatile uint8_t *)0x81)
+#define TCCR1C  ((volatile uint8_t *)0x82)
+#define TCCR2A  ((volatile uint8_t *)0xB0)
+#define TCCR2B  ((volatile uint8_t *)0xB1)
+
+// Port B
 #define PINB    ((volatile uint8_t *)0x23)
 #define DDRB    ((volatile uint8_t *)0x24)
 #define PORTB   ((volatile uint8_t *)0x25)
 
+// Port C
 #define PINC    ((volatile uint8_t *)0x26)
 #define DDRC    ((volatile uint8_t *)0x27)
 #define PORTC   ((volatile uint8_t *)0x28)
 
+// Port D
 #define PIND    ((volatile uint8_t *)0x29)
 #define DDRD    ((volatile uint8_t *)0x2A)
 #define PORTD   ((volatile uint8_t *)0x2B)
 
-// Inside linker script
-extern uint16_t e_text;
-extern uint16_t s_data;
-extern uint16_t e_data;
+// From inside linker script
+extern const uint8_t *s_text;
+extern const uint8_t *e_text;
+extern const uint8_t *s_data;
+extern const uint8_t *e_data;
+
+uint16_t memcpy(uint8_t *src, uint8_t *dest, uint16_t size);

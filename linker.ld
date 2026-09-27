@@ -11,15 +11,16 @@ MEMORY {
 */
 SECTIONS {
     .text : {
+        s_text = .;
         *(.reset)
         *(.text)
         e_text = .;
-    }
+    } > FLASH
 
     .data : {
         s_data = .;
         *(.data)
         *(.bss)
         e_data = .;
-    }
+    } > SRAM AT> FLASH
 }

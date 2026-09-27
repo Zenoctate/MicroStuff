@@ -29,7 +29,8 @@ CFLAGS = -mmcu=$(MICROCONTROLLER) -std=c11 -I$(INC_DIR) -c \
 AFLAGS = -mmcu=$(MICROCONTROLLER)
 
 LFLAGS = -m $(ARCH) -Tlinker.ld \
-	-nostdlib
+	-nostdlib \
+	--Map $(BUILD_DIR)/mem.map
 
 OFLAGS = -O binary -R .eeprom
 
