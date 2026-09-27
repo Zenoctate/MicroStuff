@@ -17,4 +17,4 @@
 #define DDRD    ((volatile uint8_t *)0x2A)
 #define PORTD   ((volatile uint8_t *)0x2B)
 
-uint8_t test();
+CODE_SEC uint8_t test();

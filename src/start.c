@@ -1,16 +1,9 @@
 #include "globaldefs.h"
 #include "mem.h"
 
-void delay();
+CODE_SEC void delay();
+CODE_SEC void start();
 
-/*
-    Order of function matters
-    The first function is always placed at address 0x0000 by compiler
-    Execution starts at 0x0000 as per the configuration of microcontroller
-
-    TODO: Write small assembly code (always run on reset) and jmp to start
-        In a linker scipt of course
-*/
 void start() {
     *DDRB |= bit5;   // Arduino digital pin 13
     test();

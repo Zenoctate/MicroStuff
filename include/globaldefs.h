@@ -6,6 +6,10 @@ typedef unsigned short uint16_t;
 typedef signed char int8_t;
 typedef signed short int16_t;
 
+// #define RST_SEC __attribute__((section(".reset")))
+#define CODE_SEC __attribute__((section(".text")))
+#define DATA_SEC __attribute__((section(".data")))
+
 #define bit0 1
 #define bit1 (1 << 1)
 #define bit2 (1 << 2)

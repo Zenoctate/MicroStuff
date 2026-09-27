@@ -1,4 +1,4 @@
-.section .something
+.section .reset
 .global reset
 .extern start
 
