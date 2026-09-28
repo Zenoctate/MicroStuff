@@ -1,14 +1,9 @@
 MEMORY {
     FLASH(rx) : ORIGIN = 0, LENGTH = 32K
-    SRAM(rw) : ORIGIN = 0x800100, LENGTH = 2K   /* Why it starts at 0x800100?? Answer given by an LLM, need to study datasheet instead */
+    SRAM(rw) : ORIGIN = 0x800100, LENGTH = 2K   /* 0x800100 because it needs to distinguish instructions for flash and sram addresses */
     /* EEPROM also is there, but don't care as of the moment */
 }
 
-
-/* 
-    JUST testing for now 
-    NO IDEA if it should be done like this
-*/
 SECTIONS {
     .text : {
         s_text = .;
@@ -19,8 +14,13 @@ SECTIONS {
 
     .data : {
         s_data = .;
-        *(.data)
-        *(.bss)
+        KEEP(*(.data))
+        KEEP(*(.bss))
         e_data = .;
     } > SRAM AT> FLASH
+
+    /DISCARD/ : {
+        *(.comment)
+        *(.trampolines)
+    }
 }

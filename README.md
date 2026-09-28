@@ -2,11 +2,6 @@ The project uses binary tools: `avrdude`, `avr-gcc`, `avr-objcopy`.
 
 Many assumptions are made when writing `Makefile`. Targeting Arduino UNO with `atmega328p` microcontroller.
 
-### Goals:
+Flashing the raw binary files only (not using `ihex`). Goal is to generate a raw binary file without any help from libraries but only build tools and binutils.
 
-1. Compile and assemble program
-2. Link the object files using linker script
-3. Extract raw machine code using avr-objcopy
-4. Flash the raw machine code only
-
-Aim is to generate a raw binary file without any help from libraries. How the project structure will be to generate the binary file is a TODO part.
+Constants will most always be written using `#define`. All global variables will always be initiallized.

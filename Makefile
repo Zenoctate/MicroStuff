@@ -24,7 +24,8 @@ FLASHER = avrdude
 CFLAGS = -mmcu=$(MICROCONTROLLER) -std=c11 -I$(INC_DIR) -c \
 	-ffreestanding -fno-builtin -nostdinc \
 	-Wall -Wextra \
-	-MMD -MP 		# Helps to check if header files are changed
+	-Wno-misspelled-isr \
+	-MMD -MP
 
 AFLAGS = -mmcu=$(MICROCONTROLLER)
 
@@ -32,7 +33,8 @@ LFLAGS = -m $(ARCH) -Tlinker.ld \
 	-nostdlib \
 	--Map $(BUILD_DIR)/mem.map
 
-OFLAGS = -O binary -R .eeprom
+# TODO: Look at more possible options to add
+OFLAGS = -O binary
 
 FLASHFLAGS = -p $(MICROCONTROLLER) -c arduino -P $(PORT) -b 115200
 

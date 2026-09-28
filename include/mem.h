@@ -1,9 +1,10 @@
-/*
-    For atmega328p
-*/
 #pragma once
 
 #include "globaldefs.h"
+
+/*
+    Assuming atmega328p microcontroller
+*/
 
 // Current timer values
 #define TCNT0   ((volatile uint8_t *)0x46)
@@ -30,6 +31,16 @@
 #define TCCR2A  ((volatile uint8_t *)0xB0)
 #define TCCR2B  ((volatile uint8_t *)0xB1)
 
+// Timer interrupt mask
+#define TIMSK0  ((volatile uint8_t *)0x6E)
+#define TIMSK1  ((volatile uint8_t *)0x6F)
+#define TIMSK2  ((volatile uint8_t *)0x70)
+
+// Timer interrupt flags
+#define TIFR0   ((volatile uint8_t *)0x35)
+#define TIFR1   ((volatile uint8_t *)0x36)
+#define TIFR2   ((volatile uint8_t *)0x37)
+
 // Port B
 #define PINB    ((volatile uint8_t *)0x23)
 #define DDRB    ((volatile uint8_t *)0x24)
@@ -51,4 +62,4 @@ extern const uint8_t *e_text;
 extern const uint8_t *s_data;
 extern const uint8_t *e_data;
 
-uint16_t memcpy(uint8_t *src, uint8_t *dest, uint16_t size);
+void load_SRAM();

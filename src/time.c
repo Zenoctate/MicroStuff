@@ -1,26 +1,33 @@
 /*
     Refer to Atmega328p datasheet
-    Only reference locations I used is written
+    Reference locations I used are written
 */
 #include "time.h"
 
-void delay(uint16_t ms) {
-    /*
-        See section 14 (specially 14.9)
+// DATA_SEC volatile uint32_t system_ms = 0;
+#define system_ms *((volatile uint32_t *)0x100)  // Start of SRAM, temporary for now
 
-        Timer0 will only be used to halt execution for a set duration
-        TODO: Is this valid and good way to implement?
+void init_timer0() {
+    /*
+        Section 14 (specially 14.9)
     */
 
     // Table 14-8 & 14-9
-    *TCCR0A = 0b00000000; // CTC mode
+    *TCCR0A = 0b00000010; // CTC mode
     *TCCR0B = 0b00000011; // Every 4us, TCNT0 increments (16MHz clock)
 
-    // Section 14.9.3
-    *TCNT0 = 0;
-    
-    for(uint16_t milis = 0; milis < ms; milis++) {
-        while(*TCNT0 < 250); // 4us * 250 = 1ms delay
-        *TCNT0 = 0;
-    }
+    // Section 14.9.4
+    *OCR0A = 249; // 4us * 250 = 1ms clock
+
+    // Section 14.9.6
+    *TIMSK0 = 0b010; // Interupt on OCR0A match TCNT0
+}
+
+void delay(uint32_t ms) {
+    uint32_t end = system_ms + ms;
+    while(system_ms < end);
+}
+
+void ISR_timer0A() {
+    system_ms += 1;
 }
