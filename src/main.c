@@ -1,5 +1,5 @@
 #include "globaldefs.h"
-#include "mem.h"
+#include "memory.h"
 #include "time.h"
 
 CODE_SEC void main();

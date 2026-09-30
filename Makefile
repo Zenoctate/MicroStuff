@@ -33,7 +33,6 @@ LFLAGS = -m $(ARCH) -Tlinker.ld \
 	-nostdlib \
 	--Map $(BUILD_DIR)/mem.map
 
-# TODO: Look at more possible options to add
 OFLAGS = -O binary
 
 FLASHFLAGS = -p $(MICROCONTROLLER) -c arduino -P $(PORT) -b 115200
@@ -41,7 +40,7 @@ FLASHFLAGS = -p $(MICROCONTROLLER) -c arduino -P $(PORT) -b 115200
 ########################################################################
 
 # Link
-$(BINFILE): $(OBJS) linker.ld
+$(BINFILE): $(OBJS) linker.ld Makefile
 	$(LD) $(LFLAGS) $(OBJS) -o $(BUILD_DIR)/intermediate.elf
 	$(OBJCOPY) $(OFLAGS) $(BUILD_DIR)/intermediate.elf $(BINFILE)
 
@@ -61,6 +60,9 @@ $(BUILD_DIR)/%_s.o: $(SRC_DIR)/%.s
 
 flash: $(BINFILE)
 	$(FLASHER) $(FLASHFLAGS) -U flash:w:$(BINFILE):r
+
+dump:
+	avrdude -p $(MICROCONTROLLER) -c arduino -P $(PORT) -U flash:r:flash.bin:r -U eeprom:r:eeprom.bin:r
 
 check:
 	avrdude -p $(MICROCONTROLLER) -c arduino -P $(PORT) -b 115200 -v

@@ -15,8 +15,10 @@
     jmp     ISR_unused          ; 0x0008 PCINT1
     jmp     ISR_unused          ; 0x000A PCINT2
 
-; Watchdog and Timer2
+; Watchdog
     jmp     ISR_unused          ; 0x000C WDT
+    
+; Timer2
     jmp     ISR_unused          ; 0x000E TIMER2_COMPA
     jmp     ISR_unused          ; 0x0010 TIMER2_COMPB
     jmp     ISR_unused          ; 0x0012 TIMER2_OVF
