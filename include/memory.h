@@ -2,10 +2,6 @@
 
 #include "globaldefs.h"
 
-/*
-    Assuming atmega328p microcontroller
-*/
-
 // Current timer values
 #define TCNT0   ((volatile uint8_t *)0x46)
 #define TCNT1L  ((volatile uint8_t *)0x84)
@@ -55,6 +51,14 @@
 #define PIND    ((volatile uint8_t *)0x29)
 #define DDRD    ((volatile uint8_t *)0x2A)
 #define PORTD   ((volatile uint8_t *)0x2B)
+
+// USART
+#define UCSR0A  ((volatile uint8_t *)0xC0)
+#define UCSR0B  ((volatile uint8_t *)0xC1)
+#define UCSR0C  ((volatile uint8_t *)0xC2)
+#define UBRR0L  ((volatile uint8_t *)0xC4)
+#define UBRR0H  ((volatile uint8_t *)0xC5)
+#define UDR0    ((volatile uint8_t *)0xC6)
 
 // From inside linker script
 extern const uint8_t *s_text;
