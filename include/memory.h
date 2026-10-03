@@ -67,3 +67,4 @@ extern const uint8_t *s_data;
 extern const uint8_t *e_data;
 
 void load_SRAM();
+uint8_t read_flash_byte(uint8_t* flash_addr);

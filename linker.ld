@@ -19,6 +19,8 @@ SECTIONS {
         e_data = .;
     } > SRAM AT> FLASH
 
+    data_size = e_data - s_data;
+
     /DISCARD/ : {
         *(.comment)
         *(.trampolines)
