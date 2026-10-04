@@ -1,10 +1,10 @@
 #include "memory.h"
 
 // void load_SRAM() {
-//     uint16_t size = e_data - s_data;
+//     uint16_t size = ld_e_data - ld_s_data;
 
 //     volatile uint8_t *temp = (volatile uint8_t *)0x100; // Start of SRAM
-//     volatile uint8_t *temp2 = (volatile uint8_t *)e_text; // TODO: Don't do this
+//     volatile uint8_t *temp2 = (volatile uint8_t *)ld_e_text; // TODO: Don't do this
 
 //     while(size-- > 0) {
 //         __asm__ __volatile__(

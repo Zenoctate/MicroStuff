@@ -4,7 +4,7 @@
 */
 #include "time.h"
 
-DATA_SEC volatile uint8_t TEST = 40; // 4us * 40 = 160us, if not loaded then 4us * (0xff) = 1ms approx.
+DATA_SEC volatile uint8_t TEST = 249;
 DATA_SEC volatile uint32_t system_ms = 0;
 // #define system_ms *((volatile uint32_t *)0x100)  // Start of SRAM, temporary for now
 

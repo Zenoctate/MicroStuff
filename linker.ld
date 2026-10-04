@@ -6,20 +6,26 @@ MEMORY {
 
 SECTIONS {
     .text : {
-        s_text = .;
         *(.reset)
         *(.text)
-        e_text = .;
+    } > FLASH
+
+    .rodata : {
+        *(.rodata)
     } > FLASH
 
     .data : {
-        s_data = .;
         KEEP(*(.data))
-        KEEP(*(.bss))
-        e_data = .;
+        KEEP(*(.bss))   /* Should not have anything because all globals will be defined */
     } > SRAM AT> FLASH
 
-    data_size = e_data - s_data;
+    ld_s_text = LOADADDR(.text);
+    ld_text_size = SIZEOF(.text);
+    ld_e_text = LOADADDR(.text) + ld_text_size;
+
+    ld_s_data = LOADADDR(.data);
+    ld_data_size = SIZEOF(.data);
+    ld_e_data = LOADADDR(.data) + ld_data_size;
 
     /DISCARD/ : {
         *(.comment)

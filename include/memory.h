@@ -61,10 +61,13 @@
 #define UDR0    ((volatile uint8_t *)0xC6)
 
 // From inside linker script
-extern const uint8_t *s_text;
-extern const uint8_t *e_text;
-extern const uint8_t *s_data;
-extern const uint8_t *e_data;
+extern const uint8_t *ld_s_text;
+extern const uint8_t *ld_text_size;
+extern const uint8_t *ld_e_text;
+
+extern const uint8_t *ld_s_data;
+extern const uint8_t *ld_data_size;
+extern const uint8_t *ld_e_data;
 
 void load_SRAM();
 uint8_t read_flash_byte(uint8_t* flash_addr);

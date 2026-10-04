@@ -31,7 +31,7 @@ AFLAGS = -mmcu=$(MICROCONTROLLER)
 
 LFLAGS = -m $(ARCH) -Tlinker.ld \
 	-nostdlib \
-	--Map $(BUILD_DIR)/mem.map
+	--Map mem.map
 
 OFLAGS = -O binary
 
