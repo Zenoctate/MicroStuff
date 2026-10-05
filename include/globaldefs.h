@@ -8,11 +8,6 @@ typedef signed char int8_t;
 typedef signed short int16_t;
 typedef signed long int32_t; // I want to it rarely used
 
-// #define RST_SEC __attribute__((section(".reset")))
-#define CODE_SEC __attribute__((section(".text")))
-#define RODATA_SEC __attribute__((section(".rodata")))
-#define DATA_SEC __attribute__((section(".data")))
-
 #define ISR __attribute__((signal, used))
 
 #define bit0 0b1

@@ -4,8 +4,6 @@
 #include "time.h"
 #include "libs/serial.h"
 
-CODE_SEC void main();
-
 void main() {
     load_SRAM();    // Always first
     init_timer0();

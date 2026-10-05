@@ -4,8 +4,8 @@ BUILD_DIR = build
 
 CSRC = $(shell find $(SRC_DIR) -name "*.c")
 HSRC = $(shell find $(INC_DIR) -name "*.h")
-ASRC = $(shell find $(SRC_DIR) -name "*.s")
-OBJS = $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%_c.o,$(CSRC)) $(patsubst $(SRC_DIR)/%.s,$(BUILD_DIR)/%_s.o,$(ASRC))
+ASRC = $(shell find $(SRC_DIR) -name "*.S")
+OBJS = $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%_c.o,$(CSRC)) $(patsubst $(SRC_DIR)/%.S,$(BUILD_DIR)/%_S.o,$(ASRC))
 
 BINFILE = firmware.bin
 
@@ -27,7 +27,7 @@ CFLAGS = -mmcu=$(MICROCONTROLLER) -std=c11 -I$(INC_DIR) -c \
 	-Wno-misspelled-isr \
 	-MMD -MP
 
-AFLAGS = -mmcu=$(MICROCONTROLLER)
+AFLAGS = -mmcu=$(MICROCONTROLLER) -I$(INC_DIR)
 
 LFLAGS = -m $(ARCH) -Tlinker.ld \
 	-nostdlib \
@@ -50,7 +50,7 @@ $(BUILD_DIR)/%_c.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $< -o $@
 
 # Assemble
-$(BUILD_DIR)/%_s.o: $(SRC_DIR)/%.s
+$(BUILD_DIR)/%_S.o: $(SRC_DIR)/%.S
 	@mkdir -p $(@D)
 	$(AS) $(AFLAGS) $< -o $@
 
