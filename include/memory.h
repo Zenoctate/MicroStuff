@@ -60,6 +60,12 @@
 #define UBRR0H  ((volatile uint8_t *)0xC5)
 #define UDR0    ((volatile uint8_t *)0xC6)
 
+// SPI
+#define SPCR    ((volatile uint8_t *)0x4C)
+#define SPSR    ((volatile uint8_t *)0x4D)
+#define SPDR    ((volatile uint8_t *)0x4E)
+
+
 // From inside linker script
 extern const uint8_t *ld_s_text;
 extern const uint8_t *ld_text_size;

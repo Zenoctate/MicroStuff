@@ -67,7 +67,10 @@ dump:
 check:
 	avrdude -p $(MICROCONTROLLER) -c arduino -P $(PORT) -b 115200 -v
 
+showtty:
+	sudo screen $(PORT) 9600
+
 clean:
-	rm -rf $(BUILD_DIR)/* *.bin
+	rm -rf $(BUILD_DIR)/* *.bin *.map
 
 all: $(BINFILE) flash
