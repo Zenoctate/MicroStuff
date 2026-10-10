@@ -18,7 +18,7 @@ load_SRAM:
     or r24, r25
     breq end_load_SRAM
     
-    copy_loop:
+    load_SRAM.loop0:
         ; Load byte from Flash (Z) into r0
         lpm r0, Z+
         
@@ -29,7 +29,7 @@ load_SRAM:
         sbiw r24, 1
         
         ; Continue if counter > 0
-        brne copy_loop
+        brne load_SRAM.loop0
     
 end_load_SRAM:
     ret

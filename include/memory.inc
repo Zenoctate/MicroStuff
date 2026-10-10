@@ -55,3 +55,14 @@
 .set UBRR0L, 0xC4
 .set UBRR0H, 0xC5
 .set UDR0, 0xC6
+
+; SPI
+.set SPCR, 0x4C
+.set SPSR, 0x4D
+.set SPDR, 0x4E
+
+; I2C
+.set TWBR, 0xB8
+.set TWSR, 0xB9
+.set TWDR, 0xBB
+.set TWCR, 0xBC

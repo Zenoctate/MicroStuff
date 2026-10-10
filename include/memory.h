@@ -65,6 +65,12 @@
 #define SPSR    ((volatile uint8_t *)0x4D)
 #define SPDR    ((volatile uint8_t *)0x4E)
 
+// I2C
+#define TWBR    ((volatile uint8_t *)0xB8)
+#define TWSR    ((volatile uint8_t *)0xB9)
+#define TWDR    ((volatile uint8_t *)0xBB)
+#define TWCR    ((volatile uint8_t *)0xBC)
+
 
 // From inside linker script
 extern const uint8_t *ld_s_text;

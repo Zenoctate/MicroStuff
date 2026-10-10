@@ -14,14 +14,23 @@ void main() {
     // Enable interrupts
     __asm__ __volatile__("sei" ::: "memory");
     
-    *DDRB |= bit5; // Arduino digital pin 13 -> Output
     serialSend("Hello from microcontroller\r\n");
+
+    // Communicate with Atmega8a
+    transmit_spi(0xAC);
+    transmit_spi(0x53);
+    uint8_t response = transmit_spi(0x00);
+    transmit_spi(0x00);
+
+    if(response == 0x53) {
+        serialSend("Success connection!!\r\n");
+    } else {
+        serialSend("Failure...\r\n");
+    }
+
     while (1) {
-        *PORTB ^= bit5; // Toggle pin 13
         uint8_t wow = wait_receive_usart0();
         transmit_usart0(wow);
-
-        // transmit_spi('w');
     }
 }
 
